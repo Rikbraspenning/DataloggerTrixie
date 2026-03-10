@@ -98,7 +98,7 @@ Na deze stappen is het systeem volledig operationeel. Je kunt het dashboard beki
 ### 1. Clone de repository
 Open de terminal op je Raspberry Pi en typ:
 ```bash
-git clone https://github.com/jmo2300/DataloggerTrixie
+git clone https://github.com/Rikbraspenning/DataloggerTrixie
 cd DataloggerTrixie
 
 ```
