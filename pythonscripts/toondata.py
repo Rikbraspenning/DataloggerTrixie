@@ -30,3 +30,4 @@ print("-"*63)
 # Sluit de cursor en de verbinding
 cursor.close()
 db.close()
+

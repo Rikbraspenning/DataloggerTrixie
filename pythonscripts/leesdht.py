@@ -1,4 +1,4 @@
-# Complete Project Details:
+# Complete Project Details: 
 # https://RandomNerdTutorials.com/raspberry-pi-dht11-dht22-python/
 # Based on Adafruit_CircuitPython_DHT Library Example
 # Aangepast J. Moeskops 03/12/2024

@@ -80,7 +80,7 @@ De bestanden uit je lokale `~/web/` map worden "live" gezet:
 ### STAP 6: Automatisering (Cron)
 Er wordt een configuratiebestand aangemaakt in `/etc/cron.d/datalogger`:
 * **Meting:** Elke 15 minuten voert de Pi `temperatuurlogger.py` uit.
-* **Grafiek:** Elke 15 minuten wordt `BewaarTempGrafiek.py` uitgevoerd. De resulterende afbeelding wordt automatisch naar de webmap gekopieerd.
+* **Grafiek:** Elke 15 minuten wordt `MatpotlibDag-Week-MaandTemperatuur-Vochtigheid.py` uitgevoerd. De resulterende afbeelding wordt automatisch naar de webmap gekopieerd.
 
 
 
@@ -104,8 +104,8 @@ cd DataloggerTrixie
 ```
 ### 2. Start de installatie
 ```bash
-chmod +x install_datalogger.sh
-./install_datalogger.sh
+chmod +x installDataLogger.sh
+./installDataLogger.sh
 
 ```
 ## Belangrijke Hardware Waarschuwing
@@ -197,8 +197,18 @@ crontab -l
 0,15,30,45 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/temperatuurlogger.py
 
 # Elke 15 minuten de afbeelding verversen
-1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/BewaarTempGrafiek.py
+1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibDagTemperatuur.py
+1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibDagVochtigheid.py
+1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibWeekTemperatuur.py
+1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibWeekVochtigheid.py
+1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibMaandTemperatuur.py
+1,16,31,46 * * * * ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibMaandVochtigheid.py
 
 # Elke 15 minuten de afbeelding kopiëren naar webroot
-2,17,32,47 * * * * sudo cp ~/Raspi25Temperatuur.png /var/www/html/afbeeldingen/Raspi25Temperatuur.png
+2,17,32,47 * * * * sudo cp ~/pythonscripts/grafieken/Raspi15DagTemperatuur.png /var/www/html/Templogger/
+2,17,32,47 * * * * sudo cp ~/pythonscripts/grafieken/Raspi15DagVochtigheid.png /var/www/html/Templogger/
+2,17,32,47 * * * * sudo cp ~/pythonscripts/grafieken/Raspi15WeekTemperatuur.png /var/www/html/Templogger/
+2,17,32,47 * * * * sudo cp ~/pythonscripts/grafieken/Raspi15WeekVochtigheid.png /var/www/html/Templogger/
+2,17,32,47 * * * * sudo cp ~/pythonscripts/grafieken/Raspi15MaandTemperatuur.png /var/www/html/Templogger/
+2,17,32,47 * * * * sudo cp ~/pythonscripts/grafieken/Raspi15MaandVochtigheid.png /var/www/html/Templogger/
 ```
