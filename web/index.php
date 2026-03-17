@@ -252,7 +252,7 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
         }
 
         function loadChart() {
-            fetch('Templogger/data.php')
+            fetch('data.php')
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
