@@ -63,7 +63,7 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperatuur- en Vochtigheidslogger</title>
-    <link rel="icon" href="/Templogger/icon.png">
+    <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
