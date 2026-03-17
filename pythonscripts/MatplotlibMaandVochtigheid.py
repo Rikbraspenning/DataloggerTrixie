@@ -61,4 +61,4 @@ plt.grid(True)
 plt.draw()
 
 # plt.show()
-fig.savefig('/home/pi15/pythonscripts/grafieken/Raspi15MaandVochtigheid.png', dpi=100)
+fig.savefig('~/pythonscripts/grafieken/Raspi15MaandVochtigheid.png', dpi=100)

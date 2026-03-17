@@ -66,4 +66,4 @@ plt.grid(True)
 plt.draw()
 
 # plt.show()
-plt.savefig('/home/pi15/pythonscripts/grafieken/Raspi15DagTemperatuur.png', dpi=100)
+plt.savefig('~/pythonscripts/grafieken/Raspi15DagTemperatuur.png', dpi=100)
