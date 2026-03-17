@@ -66,5 +66,5 @@ plt.grid(True)
 plt.draw()
 
 # plt.show()
-plt.savefig('~/pythonscripts/grafieken/Raspi15WeekTemperatuur.png', dpi=100)
+plt.savefig(os.path.expanduser('~/pythonscripts/grafieken/Raspi15WeekTemperatuur.png'), dpi=100)
 

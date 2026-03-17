@@ -6,6 +6,7 @@
 #   dan zijn er 96 meetresultaten per dag
 #   toon de laatste dag,  zet foto in /var/www/html als sudo
 
+import os
 import matplotlib.pyplot as plt 
 import matplotlib     # deze lijn commentariëren wanneer niet op achtergrond gerenderd word (crontab)
 matplotlib.use('Agg') # deze lijn commentariëren wanneer niet op achtergrond gerenderd word (crontab)
@@ -61,4 +62,4 @@ plt.grid(True)
 plt.draw()
 
 # plt.show()
-fig.savefig('~/pythonscripts/grafieken/Raspi15DagVochtigheid.png', dpi=100)
+fig.savefig(os.path.expanduser('~/pythonscripts/grafieken/Raspi15DagVochtigheid.png'), dpi=100)
