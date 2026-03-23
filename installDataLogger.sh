@@ -274,6 +274,30 @@ if stel_vraag "Stap 6: Cronjobs instellen in jouw persoonlijke crontab?"; then
 
     echo "De regels zijn toegevoegd aan je crontab."
     echo "Controleer met: crontab -l"
+
+# -----------------------------------------------------------------
+# Eerste grafieken direct aanmaken zodat de webpagina meteen werkt
+# -----------------------------------------------------------------
+    echo ""
+    echo "Grafieken aanmaken voor de eerste keer (dit kan even duren)..."
+ 
+    ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibDagTemperatuur.py
+    ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibDagVochtigheid.py
+    ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibWeekTemperatuur.py
+    ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibWeekVochtigheid.py
+    ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibMaandTemperatuur.py
+    ~/pythonscripts/dhtvenv/bin/python ~/pythonscripts/MatplotlibMaandVochtigheid.py
+ 
+    echo "Grafieken kopiëren naar de webroot..."
+ 
+    sudo cp ~/pythonscripts/grafieken/Raspi15DagTemperatuur.png   /var/www/html/Templogger/
+    sudo cp ~/pythonscripts/grafieken/Raspi15DagVochtigheid.png   /var/www/html/Templogger/
+    sudo cp ~/pythonscripts/grafieken/Raspi15WeekTemperatuur.png  /var/www/html/Templogger/
+    sudo cp ~/pythonscripts/grafieken/Raspi15WeekVochtigheid.png  /var/www/html/Templogger/
+    sudo cp ~/pythonscripts/grafieken/Raspi15MaandTemperatuur.png /var/www/html/Templogger/
+    sudo cp ~/pythonscripts/grafieken/Raspi15MaandVochtigheid.png /var/www/html/Templogger/
+ 
+    echo "Grafieken staan klaar in /var/www/html/Templogger/"
 fi
 
 # -----------------------------------------------------------------
