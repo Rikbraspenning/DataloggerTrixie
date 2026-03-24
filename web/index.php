@@ -79,23 +79,28 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
     </nav>
 
     <div class="content">
+        
         <!-- Home Tab -->
         <div id="home" class="tab-content active">
             <div class="hero">
-                <h1>Temperatuur- en Vochtigheidslogger</h1>
-                <p>Rik Braspenning</p>
+                <h1>Temperatuur &amp;<br>Vochtigheids&shy;logger</h1>
+                <p>Rik Braspenning — Lokaal L009</p>
             </div>
+
             <div class="card-grid">
-                <div class="card">
+                <div class="card" style="cursor:default;">
                     <h3>Wat</h3>
                     <p>In lokaal L009 bouwen we met een Raspberry Pi 3 een temperatuur- en vochtigheidslogger. Hiervoor gebruiken we een DHT22-sensor, die zowel de temperatuur als de relatieve luchtvochtigheid meet. De Raspberry Pi leest deze waarden elke 15 minuten uit en slaat ze op, zodat we het klimaat in het lokaal kunnen opvolgen en analyseren.</p>
+                </div>
+                <div class="card" style="cursor:default;">
+                    <h3>Hardware</h3>
+                    <p>Raspberry Pi 3 &mdash; DHT22 sensor &mdash; Meet-interval: 15 min &mdash; Opslag: MySQL database. De DHT22 heeft een nauwkeurigheid van ±0.5°C voor temperatuur en ±2–5% voor relatieve luchtvochtigheid.</p>
                 </div>
             </div>
 
             <!-- Dashboard -->
             <div class="dashboard">
                 <h2 class="section-title">Wekelijks Overzicht</h2>
-                
                 <div class="week-table-wrapper">
                     <div class="week-table-container">
                         <table>
@@ -117,12 +122,11 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
                                 <?php
                                 while ($stat = mysqli_fetch_assoc($weekStats)) {
                                     $weekStart = date('d/m', strtotime($stat['week_start']));
-                                    $weekEnd = date('d/m', strtotime($stat['week_end']));
-                                    
+                                    $weekEnd   = date('d/m', strtotime($stat['week_end']));
                                     echo "<tr>";
                                     echo "<td>{$stat['jaar']}</td>";
                                     echo "<td>W{$stat['weeknummer']}</td>";
-                                    echo "<td>{$weekStart} - {$weekEnd}</td>";
+                                    echo "<td>{$weekStart} — {$weekEnd}</td>";
                                     echo "<td>{$stat['metingen']}</td>";
                                     echo "<td><span class='temp-badge temp-avg'>{$stat['gem_temp']} °C</span></td>";
                                     echo "<td><span class='temp-badge temp-low'>{$stat['min_temp']} °C</span></td>";
@@ -148,7 +152,7 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
                     <table>
                         <thead>
                             <tr>
-                                <th>Datum & Tijd</th>
+                                <th>Datum &amp; Tijd</th>
                                 <th>Sensor</th>
                                 <th>Temperatuur</th>
                                 <th>Vochtigheid</th>
@@ -160,8 +164,8 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
                                 echo "<tr>";
                                 echo "<td>{$temperature['dateandtime']}</td>";
                                 echo "<td>{$temperature['sensor']}</td>";
-                                echo "<td>{$temperature['temperature']} °C</td>";
-                                echo "<td>{$temperature['humidity']} %</td>";
+                                echo "<td><span class='temp-badge temp-high'>{$temperature['temperature']} °C</span></td>";
+                                echo "<td><span class='temp-badge temp-low'>{$temperature['humidity']} %</span></td>";
                                 echo "</tr>";
                             }
                             ?>
@@ -184,13 +188,13 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
         <div id="dag" class="tab-content">
             <h2 class="section-title">Dag</h2>
             <div class="card-grid">
-                <div class="card" onclick="openModal('/Templogger/Raspi15DagTemperatuur.png', 'Temperatuur - Dag')">
+                <div class="card" onclick="openModal('/Templogger/Raspi15DagTemperatuur.png', 'Temperatuur — Dag')">
                     <h3>Temperatuur</h3>
-                    <img src="/Templogger/Raspi15DagTemperatuur.png" alt="Temperatuur grafiek" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="/Templogger/Raspi15DagTemperatuur.png" alt="Temperatuur grafiek" style="width:100%;height:auto;">
                 </div>
-                <div class="card" onclick="openModal('/Templogger/Raspi15DagVochtigheid.png', 'Vochtigheid - Dag')">
+                <div class="card" onclick="openModal('/Templogger/Raspi15DagVochtigheid.png', 'Vochtigheid — Dag')">
                     <h3>Vochtigheid</h3>
-                    <img src="/Templogger/Raspi15DagVochtigheid.png" alt="Vochtigheid grafiek" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="/Templogger/Raspi15DagVochtigheid.png" alt="Vochtigheid grafiek" style="width:100%;height:auto;">
                 </div>
             </div>
         </div>
@@ -199,13 +203,13 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
         <div id="week" class="tab-content">
             <h2 class="section-title">Week</h2>
             <div class="card-grid">
-                <div class="card" onclick="openModal('/Templogger/Raspi15WeekTemperatuur.png', 'Temperatuur - Week')">
+                <div class="card" onclick="openModal('/Templogger/Raspi15WeekTemperatuur.png', 'Temperatuur — Week')">
                     <h3>Temperatuur</h3>
-                    <img src="/Templogger/Raspi15WeekTemperatuur.png" alt="Temperatuur grafiek" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="/Templogger/Raspi15WeekTemperatuur.png" alt="Temperatuur grafiek" style="width:100%;height:auto;">
                 </div>
-                <div class="card" onclick="openModal('/Templogger/Raspi15WeekVochtigheid.png', 'Vochtigheid - Week')">
+                <div class="card" onclick="openModal('/Templogger/Raspi15WeekVochtigheid.png', 'Vochtigheid — Week')">
                     <h3>Vochtigheid</h3>
-                    <img src="/Templogger/Raspi15WeekVochtigheid.png" alt="Vochtigheid grafiek" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="/Templogger/Raspi15WeekVochtigheid.png" alt="Vochtigheid grafiek" style="width:100%;height:auto;">
                 </div>
             </div>
         </div>
@@ -214,13 +218,13 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
         <div id="maand" class="tab-content">
             <h2 class="section-title">Maand</h2>
             <div class="card-grid">
-                <div class="card" onclick="openModal('/Templogger/Raspi15MaandTemperatuur.png', 'Temperatuur - Maand')">
+                <div class="card" onclick="openModal('/Templogger/Raspi15MaandTemperatuur.png', 'Temperatuur — Maand')">
                     <h3>Temperatuur</h3>
-                    <img src="/Templogger/Raspi15MaandTemperatuur.png" alt="Temperatuur grafiek" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="/Templogger/Raspi15MaandTemperatuur.png" alt="Temperatuur grafiek" style="width:100%;height:auto;">
                 </div>
-                <div class="card" onclick="openModal('/Templogger/Raspi15MaandVochtigheid.png', 'Vochtigheid - Maand')">
+                <div class="card" onclick="openModal('/Templogger/Raspi15MaandVochtigheid.png', 'Vochtigheid — Maand')">
                     <h3>Vochtigheid</h3>
-                    <img src="/Templogger/Raspi15MaandVochtigheid.png" alt="Vochtigheid grafiek" style="width: 100%; height: auto; border-radius: 8px;">
+                    <img src="/Templogger/Raspi15MaandVochtigheid.png" alt="Vochtigheid grafiek" style="width:100%;height:auto;">
                 </div>
             </div>
         </div>
@@ -230,30 +234,23 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close">&times;</span>
         <div class="modal-title" id="modalTitle"></div>
-        <img class="modal-content" id="modalImage">
+        <img class="modal-content" id="modalImage" alt="">
     </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         function switchTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
 
-            // Laad grafiek als de All Time tab wordt geopend
-            if (tabId === 'alltime' && !window.chartLoaded) {
-                loadChart();
-            }
+            if (tabId === 'alltime' && !window.chartLoaded) loadChart();
         }
 
         function loadChart() {
             fetch('data.php')
-                .then(response => response.json())
+                .then(r => r.json())
                 .then(data => {
                     if (data.error) {
                         document.getElementById('chart-loading').textContent = 'Error: ' + data.error;
@@ -261,164 +258,112 @@ $weekStats = mysqli_query($connectdb, $sqlStats);
                     }
 
                     document.getElementById('chart-loading').style.display = 'none';
-                    document.getElementById('chart-svg').style.display = 'block';
+                    const svgEl = document.getElementById('chart-svg');
+                    svgEl.style.display = 'block';
 
-                    const svg = d3.select("#chart-svg"),
-                          margin = {top: 40, right: 60, bottom: 50, left: 60},
-                          width = 800 - margin.left - margin.right,
+                    const svg    = d3.select('#chart-svg'),
+                          margin = {top: 40, right: 70, bottom: 55, left: 65},
+                          width  = 800 - margin.left - margin.right,
                           height = 500 - margin.top - margin.bottom,
-                          g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+                          g      = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
-                    const parseTime = d3.timeParse("%Y-%m-%d %H:%M:%S");
+                    const parseTime = d3.timeParse('%Y-%m-%d %H:%M:%S');
                     data.forEach(d => {
                         d.dateandtime = parseTime(d.dateandtime);
                         d.temperature = +d.temperature;
-                        d.humidity = +d.humidity;
+                        d.humidity    = +d.humidity;
                     });
 
-                    const x = d3.scaleTime().range([0, width]),
+                    const x     = d3.scaleTime().range([0, width]),
                           yTemp = d3.scaleLinear().range([height, 0]),
-                          yHum = d3.scaleLinear().range([height, 0]);
+                          yHum  = d3.scaleLinear().range([height, 0]);
 
                     x.domain(d3.extent(data, d => d.dateandtime));
                     yTemp.domain([d3.min(data, d => d.temperature) - 1, d3.max(data, d => d.temperature) + 1]);
-                    yHum.domain([d3.min(data, d => d.humidity) - 5, d3.max(data, d => d.humidity) + 5]);
+                    yHum.domain([d3.min(data, d => d.humidity) - 5,    d3.max(data, d => d.humidity) + 5]);
 
-                    const lineTemp = d3.line()
-                        .x(d => x(d.dateandtime))
-                        .y(d => yTemp(d.temperature));
+                    const lineTemp = d3.line().x(d => x(d.dateandtime)).y(d => yTemp(d.temperature));
+                    const lineHum  = d3.line().x(d => x(d.dateandtime)).y(d => yHum(d.humidity));
 
-                    const lineHum = d3.line()
-                        .x(d => x(d.dateandtime))
-                        .y(d => yHum(d.humidity));
+                    // Gridlines
+                    g.append('g').attr('class','grid').attr('transform',`translate(0,${height})`)
+                     .call(d3.axisBottom(x).ticks(10).tickSize(-height).tickFormat(''));
+                    g.append('g').attr('class','grid')
+                     .call(d3.axisLeft(yTemp).ticks(10).tickSize(-width).tickFormat(''));
 
-                    function make_x_gridlines() { return d3.axisBottom(x).ticks(10); }
-                    function make_y_gridlines() { return d3.axisLeft(yTemp).ticks(10); }
+                    // X Axis
+                    g.append('g').attr('transform',`translate(0,${height})`)
+                     .call(d3.axisBottom(x).ticks(8))
+                     .selectAll('text').style('fill','#9a9a9a').style('font-family','IBM Plex Mono').style('font-size','10px');
 
-                    g.append("g")
-                        .attr("class", "grid")
-                        .attr("transform", `translate(0,${height})`)
-                        .call(make_x_gridlines().tickSize(-height).tickFormat(''));
+                    g.append('g').attr('transform',`translate(0,${height})`)
+                     .call(d3.axisBottom(x).ticks(8).tickFormat(''))
+                     .select('.domain').style('stroke','#3a3a3a');
 
-                    g.append("g")
-                        .attr("class", "grid")
-                        .call(make_y_gridlines().tickSize(-width).tickFormat(''));
+                    // Y Axis left
+                    g.append('g').call(d3.axisLeft(yTemp))
+                     .selectAll('text').style('fill','#9a9a9a').style('font-family','IBM Plex Mono').style('font-size','10px');
 
-                    g.append("g")
-                        .attr("transform", `translate(0,${height})`)
-                        .call(d3.axisBottom(x))
-                        .append("text")
-                        .attr("class", "axis-label")
-                        .attr("x", width / 2)
-                        .attr("y", 35)
-                        .style("text-anchor", "middle")
-                        .text("Tijd");
+                    // Y Axis right
+                    g.append('g').attr('transform',`translate(${width},0)`).call(d3.axisRight(yHum))
+                     .selectAll('text').style('fill','#9a9a9a').style('font-family','IBM Plex Mono').style('font-size','10px');
 
-                    g.append("g")
-                        .call(d3.axisLeft(yTemp))
-                        .append("text")
-                        .attr("class", "axis-label")
-                        .attr("x", -height / 2)
-                        .attr("y", -40)
-                        .attr("transform", "rotate(-90)")
-                        .style("text-anchor", "middle")
-                        .text("Temperatuur (°C)");
+                    // Axis labels
+                    g.append('text').attr('class','axis-label')
+                     .attr('x', width/2).attr('y', height + 42)
+                     .style('text-anchor','middle').text('TIJD');
 
-                    g.append("g")
-                        .attr("transform", `translate(${width},0)`)
-                        .call(d3.axisRight(yHum))
-                        .append("text")
-                        .attr("class", "axis-label")
-                        .attr("x", height / 2)
-                        .attr("y", 50)
-                        .attr("transform", "rotate(-90)")
-                        .style("text-anchor", "middle")
-                        .text("Luchtvochtigheid (%)");
+                    g.append('text').attr('class','axis-label')
+                     .attr('transform','rotate(-90)').attr('x',-height/2).attr('y',-48)
+                     .style('text-anchor','middle').text('TEMPERATUUR (°C)');
 
-                    g.append("path")
-                        .datum(data)
-                        .attr("fill", "none")
-                        .attr("stroke", "#ff6b6b")
-                        .attr("stroke-width", 2)
-                        .attr("d", lineTemp);
+                    g.append('text').attr('class','axis-label')
+                     .attr('transform','rotate(-90)').attr('x', height/2).attr('y', width + 58)
+                     .style('text-anchor','middle').text('LUCHTVOCHTIGHEID (%)');
 
-                    g.append("path")
-                        .datum(data)
-                        .attr("fill", "none")
-                        .attr("stroke", "#4ecdc4")
-                        .attr("stroke-width", 2)
-                        .attr("d", lineHum);
+                    // Lines
+                    g.append('path').datum(data).attr('fill','none')
+                     .attr('stroke','#e05555').attr('stroke-width',1.8).attr('d', lineTemp);
+                    g.append('path').datum(data).attr('fill','none')
+                     .attr('stroke','#3dbdb5').attr('stroke-width',1.8).attr('d', lineHum);
 
-                    const legend = svg.append("g")
-                        .attr("class", "legend")
-                        .attr("transform", `translate(${width - 80},${margin.top})`);
+                    // Legend
+                    const legend = svg.append('g').attr('transform',`translate(${margin.left + 10},${margin.top + 10})`);
+                    legend.append('rect').attr('width',160).attr('height',60)
+                     .attr('fill','rgba(29,31,33,0.9)').attr('stroke','rgba(255,255,255,0.12)');
 
-                    legend.append("rect")
-                        .attr("x", 0)
-                        .attr("y", 0)
-                        .attr("width", 140)
-                        .attr("height", 55)
-                        .attr("fill", "rgba(60, 60, 60, 0.8)")
-                        .attr("stroke", "#808080")
-                        .attr("rx", 5);
+                    legend.append('line').attr('x1',12).attr('y1',22).attr('x2',32).attr('y2',22)
+                     .attr('stroke','#e05555').attr('stroke-width',2);
+                    legend.append('text').attr('x',38).attr('y',26)
+                     .attr('fill','#9a9a9a').style('font-family','IBM Plex Mono').style('font-size','11px')
+                     .text('Temperatuur (°C)');
 
-                    legend.append("line")
-                        .attr("x1", 10)
-                        .attr("y1", 20)
-                        .attr("x2", 30)
-                        .attr("y2", 20)
-                        .attr("stroke", "#ff6b6b")
-                        .attr("stroke-width", 2);
-
-                    legend.append("text")
-                        .attr("x", 35)
-                        .attr("y", 24)
-                        .attr("fill", "#e0e0e0")
-                        .text("Temperatuur (°C)");
-
-                    legend.append("line")
-                        .attr("x1", 10)
-                        .attr("y1", 40)
-                        .attr("x2", 30)
-                        .attr("y2", 40)
-                        .attr("stroke", "#4ecdc4")
-                        .attr("stroke-width", 2);
-
-                    legend.append("text")
-                        .attr("x", 35)
-                        .attr("y", 44)
-                        .attr("fill", "#e0e0e0")
-                        .text("Vochtigheid (%)");
+                    legend.append('line').attr('x1',12).attr('y1',42).attr('x2',32).attr('y2',42)
+                     .attr('stroke','#3dbdb5').attr('stroke-width',2);
+                    legend.append('text').attr('x',38).attr('y',46)
+                     .attr('fill','#9a9a9a').style('font-family','IBM Plex Mono').style('font-size','11px')
+                     .text('Vochtigheid (%)');
 
                     window.chartLoaded = true;
                 })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
+                .catch(err => {
                     document.getElementById('chart-loading').textContent = 'Error loading data';
+                    console.error(err);
                 });
         }
 
-        function openModal(imageSrc, title) {
+        function openModal(src, title) {
             const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
-            
+            document.getElementById('modalImage').src   = src;
+            document.getElementById('modalTitle').textContent = title;
             modal.classList.add('active');
-            modalImg.src = imageSrc;
-            modalTitle.textContent = title;
         }
 
         function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.remove('active');
+            document.getElementById('imageModal').classList.remove('active');
         }
 
-        // Sluit modal met Escape toets
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     </script>
 </body>
 </html>
