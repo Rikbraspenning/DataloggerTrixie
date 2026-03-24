@@ -11,7 +11,12 @@ Dit project is ontworpen voor de Raspberry Pi (OS Trixie) om temperatuur en luch
 │   ├── leesdht.py
 │   ├── temperatuurlogger.py
 │   ├── toondata.py
-│   └── BewaarTempGrafiek.py
+│   ├── MatplotlibDagTemperatuur.py
+│   ├── MatplotlibDagVochtigheid.py
+│   ├── MatplotlibWeekTemperatuur.py
+│   ├── MatplotlibWeekVochtigheid.py
+│   ├── MatplotlibMaandTemperatuur.py
+│   └── MatplotlibMaandVochtigheid.py
 └── web/                     # Map voor webbestanden
     ├── index.php            # Website
     ├── Styles.css           # stylescheet
