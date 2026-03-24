@@ -13,7 +13,10 @@ Dit project is ontworpen voor de Raspberry Pi (OS Trixie) om temperatuur en luch
 │   ├── toondata.py
 │   └── BewaarTempGrafiek.py
 └── web/                     # Map voor webbestanden
-    └── index.php            # (En de eigen bestanden van leerlingen)
+    ├── index.php            # Website
+    ├── Styles.css           # stylescheet
+    ├── data.php             # datakey
+    └── icon.png             # icon forwebsite
 ```
 
 #  Installatiestappen Datalogger (Script Overzicht)
